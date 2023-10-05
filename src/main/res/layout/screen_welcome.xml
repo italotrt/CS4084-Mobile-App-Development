@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#92c5d6"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/welc"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\t\t\t\tGym Bros\n(logo goes here)"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/welc"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:id="@+id/logo"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="100dp"
+        android:background="#ff001e"
+        android:text="Exercise\nplanner"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:id="@+id/exercise"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/exercise"
+        android:layout_marginTop="30dp"
+        android:background="#ff001e"
+        android:text="Meal\nplanner"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:id="@+id/meal"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/meal"
+        android:layout_marginTop="30dp"
+        android:background="#ff001e"
+        android:text="Gyms near\nMe"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:id="@+id/gymNear"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/gymNear"
+        android:layout_marginTop="80dp"
+        android:text="\t\t©Jacob Beck App Group ltd. 2023-2030\n
+This app is property of Ellis Mullen Publishing.\n
+\t\t\t\t\t\t\t\t\t\tAll rights reserved."/>
+
+</RelativeLayout>
