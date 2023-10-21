@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import java.util.List;
  */
 public class SignInFragment extends Fragment {
 
-    int signIn = 19;
+    int signIn = 19; View fragView;
     Button sign;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -66,6 +67,7 @@ public class SignInFragment extends Fragment {
         sign = view.findViewById(R.id.signinplease);
 
         sign.setOnClickListener(this::OnClickSignIn);
+        fragView = view;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class SignInFragment extends Fragment {
 
     public void OnClickSignIn(View view) {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
-                    new AuthUI.IdpConfig.EmailBuilder().build()
+                new AuthUI.IdpConfig.EmailBuilder().build()
         );
 
         startActivityForResult(
@@ -95,6 +97,10 @@ public class SignInFragment extends Fragment {
                 System.out.println("Hello, " +user.getDisplayName() +
                         "!\nemail: " + user.getEmail() +
                         "\nid: " + user.getUid());
+                Bundle bundle = new Bundle();
+                String userName = user.getDisplayName();
+                bundle.putString("name", userName);
+                Navigation.findNavController(fragView).navigate(R.id.action_signInFragment_to_mainMenuFragment2, bundle);
             }else{
                 if(response == null){
                     System.out.println("Sign in failed");
