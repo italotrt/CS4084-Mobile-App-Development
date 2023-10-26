@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#92c5d6"
     tools:context=".SignInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is the sign in page" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gb_title_nobg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:paddingTop="50dp"
+        android:textStyle="bold"
+        android:id="@+id/logoSign"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
@@ -22,6 +28,7 @@
         android:textColor="@color/white"
         android:textSize="20dp"
         android:onClick="OnClickSignIn"
+        android:layout_below="@id/logoSign"
         android:id="@+id/signinplease"/>
 
-</FrameLayout>
+</RelativeLayout>
