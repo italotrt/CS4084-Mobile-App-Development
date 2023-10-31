@@ -30,8 +30,8 @@ import java.util.List;
  */
 public class SignInFragment extends Fragment {
 
-    int signIn = 19; View fragView;
-    Button sign;
+    View fragView;
+    Button sign, log;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -65,9 +65,16 @@ public class SignInFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sign = view.findViewById(R.id.signinplease);
+        log = view.findViewById(R.id.loginplease);
+        fragView = view;
 
         sign.setOnClickListener(this::OnClickSignIn);
-        fragView = view;
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(fragView).navigate(R.id.action_signInFragment_to_logInFragment);
+            }
+        });
     }
 
     @Override
@@ -78,39 +85,10 @@ public class SignInFragment extends Fragment {
     }
 
     public void OnClickSignIn(View view) {
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build()
-        );
-
-        startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build(), signIn
-        );
+        Navigation.findNavController(fragView).navigate(R.id.action_signInFragment_to_registerUserFragment);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == signIn){
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-            if(resultCode == Activity.RESULT_OK){
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                System.out.println("Hello, " +user.getDisplayName() +
-                        "!\nemail: " + user.getEmail() +
-                        "\nid: " + user.getUid());
-                Bundle bundle = new Bundle();
-                String userName = user.getDisplayName();
-                bundle.putString("name", userName);
-                Navigation.findNavController(fragView).navigate(R.id.action_signInFragment_to_mainMenuFragment2, bundle);
-            }else{
-                if(response == null){
-                    System.out.println("Sign in failed");
-                    return;
-                }
-                if(response.getError().getErrorCode() == ErrorCodes.NO_NETWORK){
-                    System.out.println("You appear to be offline");
-                    return;
-                }
-            }
-        }
-    }
+
+
 }
