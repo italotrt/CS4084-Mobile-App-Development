@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#92c5d6"
+    tools:context=".RegisterUserFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gb_title_nobg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:paddingTop="50dp"
+        android:textStyle="bold"
+        android:id="@+id/logoReg"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logoReg"
+        android:hint="New Email"
+        android:inputType="text"
+        android:id="@+id/newemail"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/newemail"
+        android:hint="New Password"
+        android:inputType="text"
+        android:id="@+id/newpassword"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff001e"
+        android:textColor="@color/white"
+        android:text="Sign Up"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/newpassword"
+        android:layout_marginTop="100dp"
+        android:id="@+id/regButt"/>
+
+</RelativeLayout>
