@@ -24,11 +24,24 @@
         android:layout_marginTop="200dp"
         android:layout_marginLeft="140dp"
         android:background="#ff001e"
-        android:text="sign in"
+        android:text="sign up"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:onClick="OnClickSignIn"
         android:layout_below="@id/logoSign"
         android:id="@+id/signinplease"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="140dp"
+        android:background="#ff001e"
+        android:text="log in"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:onClick="OnClickLogIn"
+        android:layout_below="@id/logoSign"
+        android:id="@+id/loginplease"/>
 
 </RelativeLayout>
