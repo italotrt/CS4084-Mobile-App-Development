@@ -29,7 +29,7 @@ public class RegisterUserFragment extends Fragment {
     EditText newMail;
     EditText newPass;
     View fragView;
-    Button regButton;
+    Button regButton, switchToLog;
     FirebaseAuth mAuth;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -86,8 +86,15 @@ public class RegisterUserFragment extends Fragment {
         newMail = view.findViewById(R.id.newemail);
         newPass = view.findViewById(R.id.newpassword);
         regButton = view.findViewById(R.id.regButt);
+        switchToLog = view.findViewById(R.id.switchtolog);
         mAuth = FirebaseAuth.getInstance();
 
+        switchToLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(fragView).navigate(R.id.action_registerUserFragment_to_logInFragment);
+            }
+        });
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

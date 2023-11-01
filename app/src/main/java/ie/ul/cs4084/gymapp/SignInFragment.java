@@ -87,8 +87,4 @@ public class SignInFragment extends Fragment {
     public void OnClickSignIn(View view) {
         Navigation.findNavController(fragView).navigate(R.id.action_signInFragment_to_registerUserFragment);
     }
-
-
-
-
 }
