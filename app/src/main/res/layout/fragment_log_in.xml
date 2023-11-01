@@ -48,4 +48,14 @@
         android:layout_marginTop="100dp"
         android:id="@+id/logButt"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logButt"
+        android:layout_marginTop="30dp"
+        android:background="#92c5d6"
+        android:text="Not registered? Click here!"
+        android:id="@+id/switchtoreg"/>
+
 </RelativeLayout>
