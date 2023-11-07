@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#92c5d6"
     tools:context=".ExercisePlannerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is the exercise planner fragment!" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/btnNewExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="0"
+            android:text="New Exercise" />
+    </LinearLayout>
+</LinearLayout>

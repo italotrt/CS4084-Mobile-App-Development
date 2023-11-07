@@ -1,9 +1,7 @@
-package com.example.cs4084_project;
+package ie.ul.cs4084.gymapp;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,4 +1,4 @@
-package com.example.cs4084_project;
+package ie.ul.cs4084.gymapp;
 
 import android.app.Activity;
 import android.content.Intent;

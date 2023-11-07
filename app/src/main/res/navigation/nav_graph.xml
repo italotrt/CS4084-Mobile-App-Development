@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.cs4084_project.SignInFragment"
+        android:name="ie.ul.cs4084.gymapp.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_signInFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
@@ -17,11 +17,12 @@
             android:id="@+id/action_signInFragment_to_registerUserFragment"
             app:destination="@id/registerUserFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.cs4084_project.MainMenuFragment"
+        android:name="ie.ul.cs4084.gymapp.MainMenuFragment"
         android:label="fragment_main_menu"
-        tools:layout="@layout/fragment_main_menu" >
+        tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenuFragment_to_exercisePlannerFragment"
             app:destination="@id/exercisePlannerFragment" />
@@ -29,21 +30,28 @@
             android:id="@+id/action_mainMenuFragment_to_mealPlanFragment"
             app:destination="@id/mealPlanFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/exercisePlannerFragment"
-        android:name="com.example.cs4084_project.ExercisePlannerFragment"
+        android:name="ie.ul.cs4084.gymapp.ExercisePlannerFragment"
         android:label="fragment_exercise_planner"
-        tools:layout="@layout/fragment_exercise_planner" />
+        tools:layout="@layout/fragment_exercise_planner">
+        <action
+            android:id="@+id/action_exercisePlannerFragment_to_exerciseNewFragment"
+            app:destination="@id/exerciseNewFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/mealPlanFragment"
-        android:name="com.example.cs4084_project.MealPlanFragment"
+        android:name="ie.ul.cs4084.gymapp.MealPlanFragment"
         android:label="fragment_meal_plan"
         tools:layout="@layout/fragment_meal_plan" />
+
     <fragment
         android:id="@+id/logInFragment"
-        android:name="com.example.cs4084_project.LogInFragment"
+        android:name="ie.ul.cs4084.gymapp.LogInFragment"
         android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
+        tools:layout="@layout/fragment_log_in">
         <action
             android:id="@+id/action_logInFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -51,11 +59,12 @@
             android:id="@+id/action_logInFragment_to_registerUserFragment"
             app:destination="@id/registerUserFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/registerUserFragment"
-        android:name="com.example.cs4084_project.RegisterUserFragment"
+        android:name="ie.ul.cs4084.gymapp.RegisterUserFragment"
         android:label="fragment_register_user"
-        tools:layout="@layout/fragment_register_user" >
+        tools:layout="@layout/fragment_register_user">
         <action
             android:id="@+id/action_registerUserFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -63,4 +72,10 @@
             android:id="@+id/action_registerUserFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/exerciseNewFragment"
+        android:name="ie.ul.cs4084.gymapp.ExerciseNewFragment"
+        android:label="fragment_exercise_new"
+        tools:layout="@layout/fragment_exercise_new" />
+
 </navigation>

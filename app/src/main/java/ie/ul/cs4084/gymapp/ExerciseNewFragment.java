@@ -1,13 +1,10 @@
 package ie.ul.cs4084.gymapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +13,10 @@ import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ExercisePlannerFragment#newInstance} factory method to
+ * Use the {@link ExerciseNewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ExercisePlannerFragment extends Fragment {
+public class ExerciseNewFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +27,7 @@ public class ExercisePlannerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ExercisePlannerFragment() {
+    public ExerciseNewFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +37,11 @@ public class ExercisePlannerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ExercisePlannerFragment.
+     * @return A new instance of fragment ExerciseNewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ExercisePlannerFragment newInstance(String param1, String param2) {
-        ExercisePlannerFragment fragment = new ExercisePlannerFragment();
+    public static ExerciseNewFragment newInstance(String param1, String param2) {
+        ExerciseNewFragment fragment = new ExerciseNewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,18 +62,18 @@ public class ExercisePlannerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exercise_planner, container, false);
+        return inflater.inflate(R.layout.fragment_exercise_new, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button newExerciseButton = view.findViewById(R.id.btnNewExercise);
-        newExerciseButton.setOnClickListener(new View.OnClickListener() {
+        Button addExercise = view.findViewById(R.id.btnAddNewExercise);
+        addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_exercisePlannerFragment_to_exerciseNewFragment);
+
             }
         });
     }

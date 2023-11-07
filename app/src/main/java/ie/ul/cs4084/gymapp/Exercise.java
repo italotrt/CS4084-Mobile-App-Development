@@ -45,6 +45,10 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise Name: " + name + "\nWeight: " + weight + "KG plus bar\nSets:" + sets + "\nReps Per Set:" + reps + "\nRest time between each set: " + restMins;
+        return "Exercise Name: " + name +
+                "\nWeight: " + weight + "KG plus bar" +
+                "\nSets:" + sets +
+                "\nReps Per Set:" + reps +
+                "\nRest time between each set: " + restMins;
     }
 }
