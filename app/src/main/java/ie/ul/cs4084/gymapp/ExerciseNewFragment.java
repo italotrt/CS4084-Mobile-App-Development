@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -97,11 +99,11 @@ public class ExerciseNewFragment extends Fragment {
 
                 if(validation) {
                     Map<String, Object> exercise1 = new HashMap<>();
-                    exercise1.put("Name", textInputExerciseName);
-                    exercise1.put("Body Part", textInputBodyPart);
-                    exercise1.put("Weight", numberInputWeight);
-                    exercise1.put("Sets", numberInputSets);
-                    exercise1.put("Reps", numberInputReps);
+                    exercise1.put("Name", textInputExerciseName.getEditText().getText().toString());
+                    exercise1.put("Body Part", textInputBodyPart.getEditText().getText().toString());
+                    exercise1.put("Weight", numberInputWeight.getEditText().getText().toString() + " kg");
+                    exercise1.put("Sets", numberInputSets.getEditText().getText().toString());
+                    exercise1.put("Reps", numberInputReps.getEditText().getText().toString());
                     exercises.document(textInputExerciseName.getEditText().getText().toString()).set(exercise1);
 
                     getActivity().onBackPressed();
