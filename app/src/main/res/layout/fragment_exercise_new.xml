@@ -5,13 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ExerciseNewFragment">
+    tools:context=".ExerciseNewFragment"
+    android:layout_marginTop="150dp"
+    android:layout_marginBottom="150dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_exercise_name"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        app:errorEnabled="true">
+        android:layout_height="60dp"
+        app:errorEnabled="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -23,8 +27,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_body_part"
         android:layout_width="match_parent"
-        android:layout_height="61dp"
-        app:errorEnabled="true">
+        android:layout_height="60dp"
+        app:errorEnabled="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -33,44 +39,52 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/number_input_weight"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="69dp"
-        app:errorEnabled="true">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Weight"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_input_weight"
+            android:layout_width="100dp"
+            android:layout_height="69dp"
+            app:errorEnabled="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/number_input_sets"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Weight"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Sets"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_input_sets"
+            android:layout_width="110dp"
+            android:layout_height="69dp"
+            app:errorEnabled="true">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/number_input_reps"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sets"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Reps"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/number_input_reps"
+            android:layout_width="100dp"
+            android:layout_height="69dp"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Reps"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnAddNewExercise"
