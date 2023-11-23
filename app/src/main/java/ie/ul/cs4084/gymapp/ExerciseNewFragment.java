@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -29,7 +27,6 @@ public class ExerciseNewFragment extends Fragment {
     private TextInputLayout numberInputSets;
     private TextInputLayout numberInputReps;
     private FirebaseFirestore db;
-
     private CollectionReference exercises;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -108,6 +105,14 @@ public class ExerciseNewFragment extends Fragment {
 
                     getActivity().onBackPressed();
                 }
+            }
+        });
+
+        Button cancel = view.findViewById(R.id.btnCancelExercise);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
     }
