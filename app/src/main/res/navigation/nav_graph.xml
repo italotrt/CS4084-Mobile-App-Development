@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_exercisePlannerFragment_to_exerciseNewFragment"
             app:destination="@id/exerciseNewFragment" />
+        <action
+            android:id="@+id/action_exercisePlannerFragment_to_exerciseDetail"
+            app:destination="@id/exerciseDetail" />
     </fragment>
 
     <fragment
@@ -72,10 +75,15 @@
             android:id="@+id/action_registerUserFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/exerciseNewFragment"
         android:name="ie.ul.cs4084.gymapp.ExerciseNewFragment"
         android:label="fragment_exercise_new"
         tools:layout="@layout/fragment_exercise_new" />
+    <fragment
+        android:id="@+id/exerciseDetail"
+        android:name="ie.ul.cs4084.gymapp.ExerciseDetail"
+        android:label="ExerciseDetail" />
 
 </navigation>
