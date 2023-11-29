@@ -1,4 +1,4 @@
-package ie.ul.cs4084.gymapp;
+package com.example.cs4084_project;
 
 import android.os.Bundle;
 
@@ -26,9 +26,9 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class LogInFragment extends Fragment {
 
-    EditText email, password;
-    Button log, switchToReg;
-    FirebaseAuth mAuth;
+    EditText email, password; //The EditTexts for the user's login info
+    Button log, switchToReg; //The buttons for logging in or switching to the register screen
+    FirebaseAuth mAuth; //The FireBaseAuth that will be used to verify
     View fragView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,43 +80,48 @@ public class LogInFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        //Setting up XML elements
         email = view.findViewById(R.id.emailEdit);
         password = view.findViewById(R.id.passwordEdit);
         log = view.findViewById(R.id.logButt);
         switchToReg = view.findViewById(R.id.switchtoreg);
         mAuth = FirebaseAuth.getInstance();
-        fragView = view;
+        fragView = view; //Making the view accessible by other methods
 
         switchToReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //If a new user accidentally, clicks Sign In, they can switch to Register New Account
                 Navigation.findNavController(fragView).navigate(R.id.action_logInFragment_to_registerUserFragment);
             }
         });
 
+        //When this button is clicked, we need to verify the login and let them through
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("Before email");
+                //Getting what was entered into the EditTexts
                 String userEmail = email.getText().toString();
                 String userPass = password.getText().toString();
                 System.out.println(userEmail + " " + userPass);
 
                 if(userEmail.equals("") || userPass.equals("")){
-
+                    //Nothing was entered, don't do anything
                 }else{
                     //System.out.println("Before login");
                         mAuth.signInWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    //Correct email and password, let user through
                                     System.out.println("Before next frag");
                                     Bundle bundle = new Bundle();
-                                    bundle.putString("name", userEmail);
+                                    bundle.putString("name", userEmail); //Pass the user's email to the Main Menu for the welcome text
                                     Navigation.findNavController(fragView).navigate(R.id.action_logInFragment_to_mainMenuFragment, bundle);
                                     Toast.makeText(fragView.getContext(), "Success", Toast.LENGTH_SHORT).show();
                                 } else {
+                                    //Login failed, tell user why
                                     Toast.makeText(fragView.getContext(), "Login error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }

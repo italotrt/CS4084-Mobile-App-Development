@@ -1,4 +1,4 @@
-package ie.ul.cs4084.gymapp;
+package com.example.cs4084_project;
 
 import android.os.Bundle;
 
@@ -20,8 +20,8 @@ import android.widget.TextView;
  */
 public class MainMenuFragment extends Fragment {
 
-    TextView welcomeText;
-    Button meal, exercise, maps;
+    TextView welcomeText; //TextView that welcomes the signed-in user
+    Button meal, exercise, maps; //Buttons to go to next fragments
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -70,10 +70,12 @@ public class MainMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //Once the fragment is created we need to set up the elements
         super.onViewCreated(view, savedInstanceState);
-        String bing = getArguments().getString("name");
-        welcomeText = view.findViewById(R.id.welc);
+        String bing = getArguments().getString("name"); //Get user's name from Bundle
+        welcomeText = view.findViewById(R.id.welc); //Find welcome TextView and have it welcome user
         welcomeText.setText("Welcome, " + bing);
+        //Set up the buttons
         meal = view.findViewById(R.id.meal);
         exercise = view.findViewById(R.id.exercise);
         maps = view.findViewById(R.id.gymNear);
@@ -81,6 +83,7 @@ public class MainMenuFragment extends Fragment {
         meal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Go to the meal fragment when clicked
                 Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_mealPlanFragment);
             }
         });
@@ -88,6 +91,7 @@ public class MainMenuFragment extends Fragment {
         exercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Go to the exercise planner when clicked
                 Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_exercisePlannerFragment);
             }
         });

@@ -1,4 +1,4 @@
-package ie.ul.cs4084.gymapp;
+package com.example.cs4084_project;
 
 import android.os.Bundle;
 
@@ -26,10 +26,10 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class RegisterUserFragment extends Fragment {
 
-    EditText newMail;
+    EditText newMail; //EditTexts containing new user info
     EditText newPass;
     View fragView;
-    Button regButton, switchToLog;
+    Button regButton, switchToLog; //Buttons to switch fragments
     FirebaseAuth mAuth;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,19 +82,22 @@ public class RegisterUserFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fragView = view;
+        fragView = view; //Make view accessible for other methods
+        //Set up XML elements
         newMail = view.findViewById(R.id.newemail);
         newPass = view.findViewById(R.id.newpassword);
         regButton = view.findViewById(R.id.regButt);
         switchToLog = view.findViewById(R.id.switchtolog);
         mAuth = FirebaseAuth.getInstance();
 
+        //If a pre-existing user clicked the new user button, they can switch fragments
         switchToLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(fragView).navigate(R.id.action_registerUserFragment_to_logInFragment);
             }
         });
+        //Get details and sign the user up
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,22 +106,28 @@ public class RegisterUserFragment extends Fragment {
         });
     }
 
+    //A method to check the text fields for a valid email and password, then store them in the database
     public void createUser(){
+        //Get username and password from EditTexts
         String newUserEmail = newMail.getText().toString();
         String newUserPass = newPass.getText().toString();
         if(newUserEmail.equals("") || newUserPass.equals("")){
-
+            //Nothing was entered in at least one of the fields, don't do anything
         }else{
+            //Store email and password (if valid) into database
             mAuth.createUserWithEmailAndPassword(newUserEmail, newUserPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        //Valid email and password, user is now registered
                         System.out.println("Before next frag");
-                        Bundle bundle = new Bundle();
+                        Bundle bundle = new Bundle(); //Store user email for use in the Main Menu welcome text
                         bundle.putString("name", newUserEmail);
+                        //Change fragments
                         Navigation.findNavController(fragView).navigate(R.id.action_registerUserFragment_to_mainMenuFragment, bundle);
                         Toast.makeText(fragView.getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     } else {
+                        //Registration failed, tell user why
                         Toast.makeText(fragView.getContext(), "Login error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }

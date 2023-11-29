@@ -1,11 +1,13 @@
-package ie.ul.cs4084.gymapp;
+package com.example.cs4084_project;
 
+//An Exercise class for use in the Exercise planner
 public class Exercise {
-    public String name;
+    public String name; //Name of the Exercise
     public char difficulty, bodyPart; //Difficulty will only be E, M or H (Easy,Medium,Hard), Bodypart will only be A, C or L (Arms,Core,Legs)
-    private int sets, reps, weight;
-    private int restMins = 2;
+    private int sets, reps, weight; //The Exercise info
+    private int restMins = 2; //How long user should rest between each set of an Exercise
 
+    //Constructors
     public Exercise(String name, char difficulty, char bodyPart) {
         this.name = name;
         this.difficulty = difficulty;
@@ -22,6 +24,7 @@ public class Exercise {
         difficultyFormula();
     }
 
+    //Method that determines the amount of sets and reps in a single exercise, as well as the rest time
     private void difficultyFormula() {
         switch (difficulty) {
             case 'E':
@@ -43,6 +46,7 @@ public class Exercise {
         }
     }
 
+    //A toString method returning the Exercise info in a single String
     @Override
     public String toString() {
         return "Exercise Name: " + name +
