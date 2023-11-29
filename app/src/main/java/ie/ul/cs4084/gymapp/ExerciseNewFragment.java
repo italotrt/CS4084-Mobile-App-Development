@@ -8,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,12 +20,10 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class ExerciseNewFragment extends Fragment {
-    private TextInputLayout textInputExerciseName;
-    private TextInputLayout textInputBodyPart;
-    private TextInputLayout numberInputWeight;
-    private TextInputLayout numberInputSets;
-    private TextInputLayout numberInputReps;
-    private FirebaseFirestore db;
+    // Variables used in order to add the data to the database, and get user's input
+    private TextInputLayout textInputExerciseName, textInputBodyPart, numberInputWeight, numberInputSets, numberInputReps;
+    private String exerciseName, exerciseBodyPart, exerciseSets, exerciseReps, exerciseWeight;
+    private FirebaseFirestore database;
     private CollectionReference exercises;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -80,34 +77,53 @@ public class ExerciseNewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        //Initializes the variables for the TextInputLayout
         textInputExerciseName = view.findViewById(R.id.text_input_exercise_name);
         textInputBodyPart = view.findViewById(R.id.text_input_body_part);
         numberInputWeight = view.findViewById(R.id.number_input_weight);
         numberInputSets = view.findViewById(R.id.number_input_sets);
         numberInputReps = view.findViewById(R.id.number_input_reps);
-        db = FirebaseFirestore.getInstance();
-        exercises = db.collection("Exercises");
+        database = FirebaseFirestore.getInstance();
+        exercises = database.collection("Exercises"); // Gets the reference for the Exercises collection in the database
 
         Button addExercise = view.findViewById(R.id.btnAddNewExercise);
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean validation = validateExerciseName() && validateBodyPart() && validateWeight() && validateSets() && validateReps();
+                boolean validation = validateExerciseName() && validateBodyPart() && validateSets() && validateReps();
 
+                // If it passes the validation, execute the following code
                 if(validation) {
-                    Map<String, Object> exercise1 = new HashMap<>();
-                    exercise1.put("Name", textInputExerciseName.getEditText().getText().toString());
-                    exercise1.put("Body Part", textInputBodyPart.getEditText().getText().toString());
-                    exercise1.put("Weight", numberInputWeight.getEditText().getText().toString() + " kg");
-                    exercise1.put("Sets", numberInputSets.getEditText().getText().toString());
-                    exercise1.put("Reps", numberInputReps.getEditText().getText().toString());
-                    exercises.document(textInputExerciseName.getEditText().getText().toString()).set(exercise1);
+                    // Gets the user's input and assign it to the respective variable
+                    exerciseName = textInputExerciseName.getEditText().getText().toString();
+                    exerciseBodyPart = "Body Part: " + textInputBodyPart.getEditText().getText().toString();
+                    exerciseSets = "Sets: " + numberInputSets.getEditText().getText().toString();
+                    exerciseReps = "Reps: " + numberInputReps.getEditText().getText().toString();
 
+                    // If the user did not input a weight, it assigns it to zero,
+                    // otherwise assign what the user has inputted
+                    if(numberInputWeight.getEditText().getText().toString().isEmpty()) {
+                        exerciseWeight = "Weight: 0 kg";
+                    } else {
+                        exerciseWeight = "Weight: " + numberInputWeight.getEditText().getText().toString() + " kg";
+                    }
+
+                    // Creates an Exercise object with the user's input
+                    Exercise exercise = new Exercise(exerciseName, exerciseBodyPart, exerciseSets, exerciseReps, exerciseWeight);
+
+                    // Creates a new variable and assign the reference for the Exercises collection inside the database to it
+                    CollectionReference dbExercises = database.collection("Exercises");
+                    dbExercises.add(exercise); //adds the data to the database
+
+                    // After everything is done, returns to the previous fragment
                     getActivity().onBackPressed();
                 }
             }
         });
 
+        // Button created to return to the previous fragment
+        // if the user wish to cancel the creation of a new exercise
         Button cancel = view.findViewById(R.id.btnCancelExercise);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,11 +133,15 @@ public class ExerciseNewFragment extends Fragment {
         });
     }
 
+    // Validation methods created to verify the user's input,
+    // if the user does not fill the text fields it creates a Toast letting the user know what's wrong
+
     private boolean validateExerciseName() {
         String exerciseNameInput = textInputExerciseName.getEditText().getText().toString();
 
         if (exerciseNameInput.isEmpty()) {
             textInputExerciseName.setError("Field can't be empty");
+            Toast.makeText(ExerciseNewFragment.this.getContext(), "Insert an exercise name", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             textInputExerciseName.setError(null);
@@ -134,21 +154,10 @@ public class ExerciseNewFragment extends Fragment {
 
         if (bodyPartInput.isEmpty()) {
             textInputBodyPart.setError("Field can't be empty");
+            Toast.makeText(ExerciseNewFragment.this.getContext(), "Field can't be empty", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             textInputBodyPart.setError(null);
-            return true;
-        }
-    }
-
-    private boolean validateWeight() {
-        String weightInput = numberInputWeight.getEditText().getText().toString();
-
-        if (weightInput.isEmpty()) {
-            numberInputWeight.setError("Field can't be empty");
-            return false;
-        } else {
-            numberInputWeight.setError(null);
             return true;
         }
     }
@@ -158,6 +167,7 @@ public class ExerciseNewFragment extends Fragment {
 
         if (setsInput.isEmpty()) {
             numberInputSets.setError("Field can't be empty");
+            Toast.makeText(ExerciseNewFragment.this.getContext(), "Insert the amount of SETS", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             numberInputSets.setError(null);
@@ -170,6 +180,7 @@ public class ExerciseNewFragment extends Fragment {
 
         if (repsInput.isEmpty()) {
             numberInputReps.setError("Field can't be empty");
+            Toast.makeText(ExerciseNewFragment.this.getContext(), "Insert the amount of REPS", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             numberInputReps.setError(null);
