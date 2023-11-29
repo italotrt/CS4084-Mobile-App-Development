@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/idCVCOurseItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <!--Textview for displaying our Exercise Name-->
+        <TextView
+            android:id="@+id/idExerciseName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="ExerciseName"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!--Textview for displaying our Exercise Body Part-->
+        <TextView
+            android:id="@+id/idExerciseBodyPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="Body Part"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!--Textview for displaying our Exercise Sets-->
+            <TextView
+                android:id="@+id/idExerciseSets"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Sets"
+                android:textColor="@color/black" />
+
+            <!--Textview for displaying our Exercise Reps-->
+            <TextView
+                android:id="@+id/idExerciseReps"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Reps"
+                android:textColor="@color/black" />
+
+            <!--Textview for displaying our Exercise Weight-->
+            <TextView
+                android:id="@+id/idExerciseWeight"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:text="Weight"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
