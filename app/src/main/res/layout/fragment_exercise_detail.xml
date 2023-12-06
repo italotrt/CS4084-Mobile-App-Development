@@ -7,8 +7,7 @@
     android:background="#92c5d6"
     tools:context=".ExerciseDetail">
 
-    <!--Recycler view for displaying
-        our data from Firestore-->
+    <!--Recycler view for displaying the data from Firestore-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVExercise"
         android:layout_width="match_parent"
@@ -20,5 +19,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancelView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="23dp"
+        android:background="#ff001e"
+        android:text="Return"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
