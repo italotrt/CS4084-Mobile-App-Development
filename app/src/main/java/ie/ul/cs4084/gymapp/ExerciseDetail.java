@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -134,5 +135,14 @@ public class ExerciseDetail extends Fragment {
                         Toast.makeText(ExerciseDetail.this.getContext(), "Fail to get the data.", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+        // Button made to return to the Exercise Planner Menu
+        Button returnToPlannerMenu = view.findViewById(R.id.btnCancelView);
+        returnToPlannerMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
     }
 }
