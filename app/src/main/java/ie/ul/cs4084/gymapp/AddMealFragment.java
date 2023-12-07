@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -117,9 +118,20 @@ public class AddMealFragment extends Fragment {
 
         String itemName = itemNameInput.getText().toString();
         int calories;
+        
+        if (itemName.isEmpty()) {
+            Toast.makeText(this.getContext(),
+                    "Please enter item name.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         try {
             calories = Integer.parseInt(caloriesInput.getText().toString());
         } catch (NumberFormatException e) {
+            Toast.makeText(this.getContext(),
+                    "Invalid calories input.",
+                    Toast.LENGTH_SHORT).show();
             Log.d("Add Meal Calories", "Invalid calories input.");
             return;
         }
@@ -134,6 +146,10 @@ public class AddMealFragment extends Fragment {
         }
         Meal newMeal = new Meal(itemName, calories, ingredients);
         mealList.add(newMeal);
+        Toast.makeText(this.getContext(),
+                "Meal \"" + itemName + "\" added.",
+                Toast.LENGTH_SHORT).show();
 
     }
+    
 }
