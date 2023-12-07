@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addmealfragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMealFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="83dp">
+
+    <Button
+        android:id="@+id/backToMealPlanner"
+        android:layout_width="147dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="62dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItem" />
+
+    <EditText
+        android:id="@+id/calories"
+        android:layout_width="269dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="272dp"
+        android:alpha="1"
+        android:ems="10"
+        android:hint="No. of calories"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#6C6C6C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ingredients"
+        android:layout_width="269dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="372dp"
+        android:ems="10"
+        android:hint="Ingredients"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#6C6C6C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/itemName"
+        android:layout_width="269dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="172dp"
+        android:ems="10"
+        android:hint="Item name"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#6C6C6C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addItem"
+        android:layout_width="147dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/backToMealPlanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addMealTitle" />
+
+    <TextView
+        android:id="@+id/addMealTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="441dp"
+        android:shadowColor="#5B000000"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:shadowRadius="10"
+        android:text="Add a Meal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/addItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
