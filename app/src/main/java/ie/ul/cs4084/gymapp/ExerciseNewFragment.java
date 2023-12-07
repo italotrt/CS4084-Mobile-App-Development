@@ -77,7 +77,6 @@ public class ExerciseNewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         //Initializes the variables for the TextInputLayout
         textInputExerciseName = view.findViewById(R.id.text_input_exercise_name);
         textInputBodyPart = view.findViewById(R.id.text_input_body_part);
@@ -115,6 +114,9 @@ public class ExerciseNewFragment extends Fragment {
                     // Creates a new variable and assign the reference for the Exercises collection inside the database to it
                     CollectionReference dbExercises = database.collection("Exercises");
                     dbExercises.add(exercise); //adds the data to the database
+
+                    // A toast is shown in order to let the user know that the exercise was successfully created
+                    Toast.makeText(ExerciseNewFragment.this.getContext(), "Exercise successfully created", Toast.LENGTH_SHORT).show();
 
                     // After everything is done, returns to the previous fragment
                     getActivity().onBackPressed();
