@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -88,6 +89,10 @@ public class MealPlanner extends Fragment {
         } else {
             Log.d("Meal Planner", "onViewCreated: There are no meals.");
         }
+
+        TextView caloriesText = view.findViewById(R.id.caloriesText);
+        String calories = getString(R.string.caloriesPlaceholder, mealViewModel.caloriesTotal());
+        caloriesText.setText(calories);
 
         Button mealButton = view.findViewById(R.id.CurrentMealButton);
         mealButton.setOnClickListener(new View.OnClickListener() {
