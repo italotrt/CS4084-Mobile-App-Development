@@ -1,4 +1,4 @@
-package com.example.myfirstfragment;
+package ie.ul.cs4084.gymapp;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
