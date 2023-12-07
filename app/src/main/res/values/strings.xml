@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CS4084GymApp</string>
     <string name="google_maps_key">AIzaSyCzSH7QtYL_I7gdVYs27sD7WPqtP_PsH-E</string>
+    <string name="caloriesPlaceholder">Total calories:\n%1$d calories</string>
 </resources>
