@@ -90,9 +90,8 @@ public class MealPlanner extends Fragment {
             Log.d("Meal Planner", "onViewCreated: There are no meals.");
         }
 
-        TextView caloriesText = view.findViewById(R.id.caloriesText);
-        String calories = getString(R.string.caloriesPlaceholder, mealViewModel.caloriesTotal());
-        caloriesText.setText(calories);
+        updateCalories(view);
+
 
         Button mealButton = view.findViewById(R.id.CurrentMealButton);
         mealButton.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +114,7 @@ public class MealPlanner extends Fragment {
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_mealPlanner_to_addmealfragment);
+                Navigation.findNavController(v).navigate(R.id.action_mealPlanner_to_addMealFragment);
             }
         });
 
@@ -134,6 +133,10 @@ public class MealPlanner extends Fragment {
                 MealViewModel mealViewModel = new ViewModelProvider(requireActivity()).get(MealViewModel.class);
                 List<Meal> mealList = new ArrayList<>();
                 mealViewModel.setMeals(mealList);
+                Toast.makeText(v.getContext(),
+                        "Meals cleared!",
+                        Toast.LENGTH_SHORT).show();
+                updateCalories(view);
                 Log.d("Clear Button", "Meals cleared!");
             }
         });
@@ -147,4 +150,11 @@ public class MealPlanner extends Fragment {
         });
 
     }
+
+    public void updateCalories(View view) {
+        MealViewModel mealViewModel = new ViewModelProvider(requireActivity()).get(MealViewModel.class);
+        TextView caloriesText = view.findViewById(R.id.caloriesText);
+        String calories = getString(R.string.caloriesPlaceholder, mealViewModel.caloriesTotal());
+        caloriesText.setText(calories);
     }
+}
