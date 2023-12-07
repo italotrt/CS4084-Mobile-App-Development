@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,11 +99,17 @@ public class DeleteMealFragment extends Fragment {
                         if (mealList.get(i).getName().equals(itemName)) {
                             mealList.remove(i);
                             itemRemoved = true;
+                            Toast.makeText(v.getContext(),
+                                    "\"" + itemName + "\" removed.",
+                                    Toast.LENGTH_SHORT).show();
                             Log.d("Delete Item", itemName + " removed.");
                             break;
                         }
                     }
                     if (!itemRemoved) {
+                        Toast.makeText(v.getContext(),
+                                "No item was found.",
+                                Toast.LENGTH_SHORT).show();
                         Log.d("Delete Item", "No item was found.");
                     }
                 }
