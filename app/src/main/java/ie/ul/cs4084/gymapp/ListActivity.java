@@ -1,4 +1,4 @@
-package com.example.myfirstfragment;
+package ie.ul.cs4084.gymapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
