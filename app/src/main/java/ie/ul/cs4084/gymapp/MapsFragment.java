@@ -1,4 +1,4 @@
-package com.example.myfirstfragment;
+package ie.ul.cs4084.gymapp;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
